@@ -22,7 +22,7 @@ x--;
 
 ### True e False com inteiros em "C"
 - Em **C**, todo valor diferente de **0** é o mesmo que verdadeiro
-- E **0** é falso
+- E **0** é mesmo que falso
 
 ### Operadores lógicos
 
@@ -33,9 +33,9 @@ x--;
 - Ambos tem que ser verdadeiros
 
 #### **OU** lógico (||)
-- se x(true) e y(true) --> x || y (true)
-- se x(true) e y(false) --> x || y (true)
-- se x(false) e y(false) --> x || y (false)
+- se x(true) ou y(true) --> x || y (true)
+- se x(true) ou y(false) --> x || y (true)
+- se x(false) ou y(false) --> x || y (false)
 - Um ou ambos tem que ser verdadeiros
 
 #### **Não** lógico (!)
