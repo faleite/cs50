@@ -116,4 +116,67 @@ int main(void)
 }
 ```
 
-**Time stop Lecture: 1h01m08s**
+## Matrizes
+*Exemplo com código:*
+```c
+// Strings
+// Strings são matrizes que terminam com um caractere especial
+// '\0', ou um byte com todos os oito bits definidos como 0
+// Esse caractere é chamado de caractere nulo ou NUL.
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string s = "HI!";
+
+    // %i == int, s[3] == ultimo char/int == \0
+    printf("%i %i %i %i\n", s[0], s[1], s[2], s[3]);
+}
+```
+
+### Manipulando matrizes para obter tamanho de uma string
+*Exemplo com código:*
+```c
+// Verifica tamanho de uma string
+#include <cs50.h>
+#include <stdio.h>
+
+// biblioteca string de "C"
+// Uso da função strlen
+#include <string.h>
+
+// Cabeçario da função
+int string_length(string s);
+
+int main(void)
+{
+    string name = get_string("Name: ");
+
+    // funçao da biblioteca string.h
+    // int length = strlen(name);
+
+    // Usa a minha função
+    int length = string_length(name);
+
+    printf("%i\n", length);
+}
+
+// Função que verifica tamnho de uma string
+int string_length(string s)
+{
+    int i = 0;
+    // Enquanto caractere for diferente de NUL ('\0')
+    while (s[i] != '\0')
+    {
+        i++;
+    }
+    return i;
+}
+```
+
+- *Podemos usar as [páginas de manual](https://manual.cs50.io/) do CS50\
+para encontrar e aprender sobre bibliotecas e funções.*
+- *Veja mais [aqui](https://www.ime.usp.br/~pf/algoritmos/apend/interfaces.html)*
+
+**time lecture: 1h29m24s**:
