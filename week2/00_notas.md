@@ -179,4 +179,104 @@ int string_length(string s)
 para encontrar e aprender sobre bibliotecas e funções.*
 - *Veja mais [aqui](https://www.ime.usp.br/~pf/algoritmos/apend/interfaces.html)*
 
-**time lecture: 1h29m24s**:
+### Imprime uma string sem a funçao "%s"
+```c
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string s = get_string("Input:  ");
+    printf("Output: ");
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        printf("%c", s[i]);
+    }
+    printf("\n");
+}
+```
+
+### Lowercase - Uppercase
+- Podemos converter uma letra minúscula em seu equivalente maiúsculo subtraindo\
+a diferença entre seus valores ASCII, que está 32entre ae A, e be B, e assim por diante.
+- Tabela [ASCII](https://asciichart.com/)
+*Exemplo com código:*
+```c
+#include <cs50.h>
+#include <ctype.h>  // funções sobre lowercase e uppercase
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string s = get_string("Before: ");
+    printf("After: ");
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        // "islower" retorna diferente de 0 se char for minúsculo
+        // ...valor diferente de 0 em bool é "True"
+        // 0 em bool é "False"
+        // if (islower(s[1]))
+
+        if (s[i] >= 'a' && s[i] <= 'z')
+        {
+            // "toupper" capitaliza char minúsculos
+            // ...mantém os não minúsculos como estão
+            // printf("%c", toupper(s[i]));
+
+            printf("%c", s[i] - 32);
+        }
+        else
+        {
+            printf("%c", s[i]);
+        }
+    }
+    printf("\n");
+}
+```
+
+*Segundo Exemplo com código:*
+```c
+#include <cs50.h>
+#include <ctype.h>  // funções sobre lowercase e uppercase
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string s = get_string("Before: ");
+    printf("After: ");
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        //  "toupper" capitaliza os caracteres minúsculos
+        // ...e retorna os caracteres não minúsculos como eram originalmente
+        printf("%c", toupper(s[i]));
+    }
+    printf("\n");
+}
+```
+
+## Argumentos de linha de comando
+- **Void** na função **main** significa *vazio*, que não aceita nenhum argumento
+    - *Exemplo:*
+      ```c
+      int main(void)
+      {
+        ...
+      }
+      ```
+- Porém nossos próprios programas também podem receber argumentos de linha de comando\
+ou entradas fornecidas ao nosso programa no comando que usamos para executá-lo.
+    - *Exemplo:*
+      ```c
+      // "argc" é a contagem de argumentos, ou o número de argumentos (palavras) digitados
+      // "argv[]" vetor de argumento (ou lista de argumentos), é uma matriz dos próprios
+      // ...argumentos (palavras)
+      int main(int argc, string argv[])
+      {
+          ...
+      }
+      ```
+**--> Time lecture: 1h47m39s**\
+*back to the line: 200*
