@@ -268,15 +268,67 @@ int main(void)
       ```
 - Porém nossos próprios programas também podem receber argumentos de linha de comando\
 ou entradas fornecidas ao nosso programa no comando que usamos para executá-lo.
+- Os agumentos passados abaixo na função `main()` aceitam argumentos de linha de comando
     - *Exemplo:*
       ```c
-      // "argc" é a contagem de argumentos, ou o número de argumentos (palavras) digitados
-      // "argv[]" vetor de argumento (ou lista de argumentos), é uma matriz dos próprios
-      // ...argumentos (palavras)
+      // "argc" é a contagem de argumentos, armazena quantas palavras
+      // ...foram digitadas no prompt
+      // "argv[]" vetor de argumento (ou lista de argumentos), é uma matriz
+      // ...de todas as palavras foram digitadas no prompt
       int main(int argc, string argv[])
       {
           ...
       }
       ```
-**--> Time lecture: 1h47m39s**\
-*back to the line: 200*
+*Exemplo:*
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+// argc: contagem de argumentos passado na linha de comando
+// argv: armazena argumentos passado na linha de comando
+int main(int argc, string argv[])
+{
+    // Se numero de argumentos for igual a dois
+    if (argc == 2)
+    {
+        // imprima na tela hello, + "segundo argumento"
+        printf("hello, %s\n", argv[1]);
+    }
+    // caso contrário
+    else
+    {
+        // imprima isso:
+        printf("Hello, world\n");
+    }
+}
+```
+
+- A função **main** também retorna um valor inteiro chamado **status de saída**\
+Por padrão, a funão **main** retorna **0** para indicar que nada deu errado.
+- Mas podemos escrever um programa para retornar um valor diferente:
+    - *Exemplo:*
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+// argc: contagem de argumentos passado na linha de comando
+// argv: armazena argumentos passado na linha de comando
+int main(int argc, string argv[])
+{
+    // Se numero de argumentos for diferente de dois
+    if (argc != 2)
+    {
+        // imprima isso:
+        printf("missing command-line argument\n");
+        // status de saída diferente de zero indica erro
+        return 1;
+    }
+    printf("hello, %s\n", argv[1]);
+
+    // status igual a zero indica ok sem erros
+    // mesmo que não seja tecnicamente necessário
+    // ...pois "C" retorna automaticamente 0
+    return 0;
+}
+```
