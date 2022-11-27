@@ -2,7 +2,7 @@
 
 ## Compilar Código
 
-*Compliar com o programna make:*
+*Compliar com o programa make:*
 
 Comando|Função|
 -------|------|
@@ -18,7 +18,7 @@ Comando|Função
 Comando|Função
 -------|-----|
 **clang -o hello hello.c -lc50**| *Compilar arquivo hello.c*
-obs.: | *-lc50 (informa link da biblioteca a ser inclído no compilador)*
+obs.: | *-lc50 (informa link da biblioteca a ser incluído no compilador)*
 *hello (nomeia arquivo compilado)*| *hello.c (compilar o arquivo)*
 
 *Arquivo hello.c:*
@@ -80,11 +80,11 @@ em uma grade, um após o outro.
 int main(void)
 {
     // Podemos armazenar várias pontuações em uma array
-    int scores[3];  // aqui temos 3 valores armazenados
+    int scores[3];  // aqui teremos 3 valores armazenados
 
     // O primeiro valor sempre sera armazenado em "0"
     scores[0] = 72;
-    scores[1] = 72;
+    scores[1] = 73;
     scores[2] = 33;
 
     // Aqui há um calculo da média dos três valores
@@ -153,7 +153,7 @@ int main(void)
 {
     string name = get_string("Name: ");
 
-    // funçao da biblioteca string.h
+    // funçao "strlen" da biblioteca string.h, calcula o tamanho da string
     // int length = strlen(name);
 
     // Usa a minha função
@@ -199,8 +199,8 @@ int main(void)
 
 ### Lowercase - Uppercase
 - Podemos converter uma letra minúscula em seu equivalente maiúsculo subtraindo\
-a diferença entre seus valores ASCII, que está 32entre ae A, e be B, e assim por diante.
-- Tabela [ASCII](https://asciichart.com/)
+a diferença entre seus valores ASCII, que está 32 entre **a** e **A**, e **b** e **B**, e assim por diante.
+- Tabela [ASCII](https://asciichart.com/)\
 *Exemplo com código:*
 ```c
 #include <cs50.h>
@@ -215,7 +215,7 @@ int main(void)
     for (int i = 0, n = strlen(s); i < n; i++)
     {
         // "islower" retorna diferente de 0 se char for minúsculo
-        // ...valor diferente de 0 em bool é "True"
+        // valor diferente de 0 em bool é "True"
         // 0 em bool é "False"
         // if (islower(s[1]))
 
@@ -274,7 +274,7 @@ ou entradas fornecidas ao nosso programa no comando que usamos para executá-lo.
       // "argc" é a contagem de argumentos, armazena quantas palavras
       // ...foram digitadas no prompt
       // "argv[]" vetor de argumento (ou lista de argumentos), é uma matriz
-      // ...de todas as palavras foram digitadas no prompt
+      // ...de todas as palavras que foram digitadas no prompt
       int main(int argc, string argv[])
       {
           ...
@@ -304,8 +304,8 @@ int main(int argc, string argv[])
 }
 ```
 
-- A função **main** também retorna um valor inteiro chamado **status de saída**\
-Por padrão, a funão **main** retorna **0** para indicar que nada deu errado.
+- A função **main** também retorna um valor inteiro chamado **status de saída**.\
+Por padrão, a função **main** retorna **0** para indicar que nada deu errado.
 - Mas podemos escrever um programa para retornar um valor diferente:
     - *Exemplo:*
 ```c
