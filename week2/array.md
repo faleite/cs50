@@ -1,13 +1,13 @@
 # Arrays (Matrizes)
 
-- Arrays são uma estrutura de dados fundamental para qualqer\
+- Arrays são uma estrutura de dados fundamental para qualquer\
 linguagem de programação
 - Usamos arrays para armazenar valores do mesmo tipo de dados
 - Em "C", os elemntos de um  array são indexados a partir de 0.
-- Onde o primeiro elemnto esta no índice 0,\
+- Onde o primeiro elemento esta no índice 0,\
 e o último elemnto esta no índice -1
-    - Portanto, se nosso array tiver 50 elemntos, o primeiro elemnto\
-    esta em 0 e o último elemnto esta em 49.
+    - Portanto, se nosso array tiver 50 elementos, o primeiro elemento\
+    esta em 0 e o último elemento esta em 49.
 - Existem três partes em uma declaração de array:
     - Um tipo, um nome, e um tamanho:
         ```c
@@ -22,7 +22,7 @@ e o último elemnto esta no índice -1
 // Sintax de Instanciação
 bool truthtable[3] = { false, true, true };
 
-// Sintax de elemnto individual
+// Sintax de elemento individual
 bool truthtable[3];
 truthtable[0] = false;
 truthtable[1] = true;
