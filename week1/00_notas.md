@@ -75,7 +75,8 @@ const int MINE = 2;
 
 ### Bool
 Código|Funçao
-**||**| *ou lógico*
+------|------
+**\| \|**| *ou lógico*
 **&&**| *e lógico*
 
 *Importante:*
