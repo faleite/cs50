@@ -232,3 +232,11 @@ void draw(int n)
     printf("\n");
 }
 ```
+### Em suma
+- A classificação por seleção itera pelas partes não classificadas de uma lista,\
+selecionando o menor elemento a cada vez e movendo-o para o local correto.
+- A classificação por bolhas compara pares de valores adjacentes um de cada vez e\
+os troca se estiverem na ordem incorreta. Isso continua até que a lista seja\
+classificada.
+- A classificação por mesclagem divide recursivamente a lista em duas repetidamente\
+e, em seguida, mescla as listas menores de volta em uma maior na ordem correta.
