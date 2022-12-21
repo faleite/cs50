@@ -4,7 +4,7 @@
 - Lembre-se de que os arrays são indexados por zero, o que significa que o primeiro\
 item tem um índice de 0. E com **n** itens, o maior índice seria **n-1**.
 
-## Big *O*  (eficiêcia do algoratimof)
+## Big *O*  (eficiêcia do algoratimo)
 - Algoritmos de pesquisa. Para comparar sua eficiência, consideraremos\
 o **tempo de execução** ou quanto tempo um algoritmo leva para ser executado,\
 dado algum tamanho de entrada.
@@ -92,7 +92,7 @@ int main(void)
 ```c
 // typedef é uma palavra reservada que define um novo tipo de dados
 // struct palavra chave que informa ao compilador que este não é apenas
-// ...tipo simples de dados, mas uma estrutura que contém várias coisas
+// ...um tipo simples de dados, mas uma estrutura que contém várias coisas
 typedef struct
 {
     string name;

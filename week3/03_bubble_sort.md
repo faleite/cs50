@@ -15,8 +15,7 @@ o de valor mais alto para a direita.
 - Na pior dos casos, a matriz está em ordem completamente inversa, e portanto\
 temos que iterar por cada um dos elementos grandes por toda matriz. E também\
 temos que colocar todos os pequenos elementos de volta em toda a matriz.
-Tempo de execução em notação Big O: O(n2)
-- Na melhor das hipóteses, a matriz ja esta ordenada quando entramos. Não\
-precisamos fazer nenhuma troca na primeira passagem.
-encontramos o que estamos procurando.
-Tempo de execução em notação Big O: \Omega(n)
+    - Tempo de execução em notação Big O: O(n2)
+- Na melhor das hipóteses, a matriz ja esta ordenada quando encontramos o que\
+estamos procurando. Não precisamos fazer nenhuma troca na primeira passagem.
+    - Tempo de execução em notação Big O: Omega(n)
