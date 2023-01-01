@@ -63,5 +63,5 @@ ___
 1. Cada bloco de memória que você reserva em **malloc()** deve ser\
 subseqüentemente liberado com **free()**.
 2. Somente a memória que você reserva em **malloc()** deve ser  liberada com\
-**free()d**.
+**free()**.
 3. Não libere um bloco de memória mais de uma vez.
