@@ -742,5 +742,5 @@ int main(void)
     return (0);
 }
 ```
-Step --> **C - VI - 5**
+*Step -->* **C - VII - 3**
 
