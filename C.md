@@ -18,7 +18,7 @@ ex06    | ok
 
 C01  |Status
 -----|:----:
-ex07 | ok
+ex08 | ok
 ___
 
 ## Artigo
@@ -743,4 +743,3 @@ int main(void)
 }
 ```
 *Step -->* **C - VII - 3**
-
