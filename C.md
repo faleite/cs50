@@ -742,4 +742,90 @@ int main(void)
     return (0);
 }
 ```
-*Step -->* **C - VII - 3**
+### Aritimética dos ponteiros
+
+- Movimentação de endereço do ponteiro
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int     a;
+    int     *ptr;
+
+    ptr = &a;
+    /*  ptr no momento, é o endereço de a. */
+    printf("%p\n", ptr);  // end: 0x7ff7bfcaa608
+    /* "ptr + 1" altera o endereço em 4 pois ptr é um ponteiro para int
+    *  Ocasiona em movimentação de inteiros */
+    printf("%p\n", ptr + 1);  // end: 0x7ff7bfcaa60c
+    return (0);
+}
+```
+
+- Movimentação e alteração de valores de ponteiros
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int     b;
+    int     a;
+    int     *ptr;
+
+    b = 23;
+    a = 12;
+    ptr = &b;  // ptr aponta para o endereço de b (&b)
+    printf("%p\n", ptr);  // end de ptr: 0x7ff7bfcaa608
+    printf("%p\n", &b);  // end de b (&b): 0x7ff7bfcaa608
+    printf("%p\n", ptr - 1);  // end de ptr - 1: 0x7ff7bfcaa604
+    printf("%d\n", *(ptr - 1));  // o que há neste end: 12
+    *(ptr - 1) = 78;  // atribui 78 a este endereço
+    printf("%d\n", a);  // o que há em a: 78
+    return (0);
+}
+```
+
+- Tabelas
+    - Tabelas e ponteiros estão intimamente ligados.
+    - Ex.: int tab[3], o nome da tabela (tab) é um ponteiro para o tipo de elemento.
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int tab[3];
+
+    tab[0] = 134;
+    tab[1] = 145;
+    printf("%d\n", *(tab));  // é o endereço do 1º elemento da tabela
+    printf("%d\n", *(tab + 1));  // é o endereço do 1º elemento da tabela + 1
+    return (0);
+}
+```
+- Tabelas são ponteiros presentes virtualmente, e uma ótima ferramenta para se\
+descolcar nas tabelas.
+- As chaves [] são um cáuculo aritimético de ponteiros e uma direção.
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int tab[3];
+    int *tab2[2];
+
+    tab[2] = 145;
+    tab2[1] = tab;
+//  tab2[1][2] = 18;
+//  *(tab2[1] + 2) = 18;
+    *(*(tab2 + 1) + 2) = 18;
+    printf("%d\n", *(tab + 2));
+//  printf("%d\n", tab[2]); mesmo que printf acima
+    return (0);
+}
+```
+
+*Step -->* **C - VII - 6**
