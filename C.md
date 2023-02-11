@@ -648,8 +648,8 @@ ___
 
 - O **ponteiro** é um tipo de váriavel, que possibilita a criação de memória.
 - A memória é dividida em duas partes:
-    - **Stack** que é o topo da memória, armazenada de forma decrescentem do\
-    maior pro menor.
+    - **Stack** que é o topo da memória, armazenada de forma decrescente\
+    (do maior pro menor).
     - **Heap** é a parte de baixo dos endereços, armazena de forma crescente\
     do menor pro maior.
 - A memória é virtutal, e antes será mapeda em algo físico, como nas tiras\
