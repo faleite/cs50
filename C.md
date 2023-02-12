@@ -644,6 +644,9 @@ int main(void)
 ```
 ___
 
+## Ponteiros
+___
+
 ### Ponteiros
 
 - O **ponteiro** é um tipo de váriavel, que possibilita a criação de memória.
@@ -827,5 +830,183 @@ int main(void)
     return (0);
 }
 ```
+___
 
-*Step -->* **C - VII - 6**
+### String de caracteres
+
+- É um grupo de bytes, terminado em um byte de valor 0.
+- o valor 0, equivale ao caractere **\0** na tabela ASCII.
+- Uma string de caracteres é um conjunto de bytes seguidos que termina com 0.
+- Em geral, acessamos uma string de caracteres via char*, pois é o endereço\
+do primeiro caractere.
+- E em seguida, avançamos até achar um caractere de valor 0 ('\0').
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    /* caractere */
+    char c;
+
+    c = '0';
+    printf("%d\n", c); // valor int de c: 48
+
+    c = 0;
+    printf("%d\n", c); // valor int de c: 0 (equivale '/0')
+
+    /* strings */
+    char str[] = "lol"; // declarando uma string, que seja alteravel
+
+    str[0] = 'p'; // altera o primeiro caracter da string
+    // 1º dst do primeiro char (p), 2º toda a string (pol)
+    printf("%c %s\n", *str, str);
+
+    return (0);
+}
+```
+___
+
+### Utilisação geral dos ponteiros
+
+- Dois usos importantes do ponteiro:
+    - Como usar:
+        ```c
+        #include <stdio.h>
+
+        void fct(int *a) // aponta para o endereço de um int
+        {
+            *a = *a + 42; // salvo o valor do endereço de ('a' + 42) no endereço de 'a'
+        }
+
+        int main(void)
+        {
+            int a;
+
+            a = 42;
+            printf("%d\n", a); // retorna 42
+
+            /* aqui não passo 'a' para a funçao mais sim uma copia de 'a'
+             * fct(a); */
+
+            fct(&a); // aqui pego o que ha no endereço de 'a'
+            printf("%d\n", a); // retorna 84
+
+            return (0);
+        }
+        ```
+        - Podemos mudar, em uma função, uma variável que veio de outra função
+    - O que é um ponteiro nulo:
+        ```c
+        #include <stdio.h>
+
+        int main(void)
+        {
+            int *ptr;
+
+            /* não se deve por um valor ha um ponteiro, pois é o mesmo que apontar para um
+             * endereço na memória */
+            // ptr = 42;
+
+            /* Por conveção, se um ponteiro tem valor zero, ele é um ponteiro nulo
+             * Isto é, entre aspas ele não aponta para nada.
+             * Todos os ponteiros que estão em 0, ainda não tem local aonde ir.
+             * Então posso usar 0, só o 0, para dizer que um ponteiro não esta
+             * apontado para nada*/
+            ptr = 0;
+
+            return (0);
+        }
+        ```
+___
+
+### Ponteiros para void
+
+- **void** é utilizada para dizer a uma função que não retorne nada ou que não\
+pegue nenhum parametro.
+- Uso do void para ponteiros:
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    void    *ptr;
+    int     *ptr_i;
+    char    *ptr_c;
+
+    /* não posso colocar um endereço de um ponteiro int
+     * em um ponteiro de char, por exemplo. */
+    ptr_i = ptr_c;
+
+    /* Mas eu tenho o ponteiro (void *ptr) que permite ser equivalente
+     * a um ponteiro que é um endereço, ou seja posso re-especifar o
+     * ponteiro (void *ptr) tranformando-o em quaquer tipo
+     * Também serve para a sua fução utilize a memória sem saber o que é
+     * exatamente
+     * Permite também* que você gere memória como você quiser. */
+    // possibidades de atribuição ao ponteiro void:
+    ptr = ptr_c;
+    ptr = &ptr;
+    ptr = ptr_i;
+    ptr_c = ptr;
+
+    return (0);
+}
+```
+___
+
+### Ponteiros para funções
+
+- Como declar um ponteiro para função:
+```c
+#include <stdio.h>
+
+int fct(char c)
+{
+    printf("%c\n", c);
+    return (0);
+}
+
+int main(void)
+{
+    /* préciso reecrever o protótipo da função
+     * sem colocar um argumento
+     * */
+    int (*ptr)(char);
+
+    ptr = &fct; // recupera o endereço da função "fct()"
+    (*ptr)('o');
+    return (0);
+}
+```
+___
+
+### Malloc (heap, malloc e free)
+
+- **heap** é a parte da memória baixa, siginifica "monte"
+    - ao contrario da stack, pode ser controlada.
+    - (a stack se alarga e diminui, conforme chamamos uma funçao ou\
+    declaramos variáveis)
+    - no **heap**, é preciso usar funções para pedir memória diretamente.
+    -
+```c
+#include <stdio.h>
+
+int *get()  // Esta funçao remete a um endereço que esta na stack
+{
+    int i;
+
+    return (&i);  // retorna o endereço de 'i'
+}
+
+int main(void)
+{
+    int *ptr;
+
+    ptr = get();
+    *ptr = 19;
+    printf("%d\n", *ptr);
+
+    return (0);
+}
+```
+*Step -->* **C - VII - 10**
