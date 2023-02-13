@@ -7,7 +7,7 @@ ___
 |--|--|--|--|--|--|--|:-:|
 |29|30|31|1 | 2| 3| 4| * |
 | 5|6 |7 |8 |9 |10|11| * |
-|12|13|14|15|16|17|18|   |
+|12|13|14|15|16|17|18| * |
 |19|20|21|22|23|24|25|   |
 |26|27|28|
 ___
@@ -968,9 +968,8 @@ int fct(char c)
 
 int main(void)
 {
-    /* préciso reecrever o protótipo da função
-     * sem colocar um argumento
-     * */
+    /* preciso reescrever o protótipo da função
+     * sem colocar um argumento */
     int (*ptr)(char);
 
     ptr = &fct; // recupera o endereço da função "fct()"
@@ -987,15 +986,21 @@ ___
     - (a stack se alarga e diminui, conforme chamamos uma funçao ou\
     declaramos variáveis)
     - no **heap**, é preciso usar funções para pedir memória diretamente.
-    -
 ```c
 #include <stdio.h>
+#include <stdlib.h> // usado neste caso para free e malloc
 
 int *get()  // Esta funçao remete a um endereço que esta na stack
 {
-    int i;
+    int *tab;
 
-    return (&i);  // retorna o endereço de 'i'
+    /* malloc reserva espaço na memória
+     * A função sizeof() pega o tamanho da variavel passada como parametro
+     * indepemdente do tipo
+     * Neste caso esta reservando espaço equivalente a 1 int * 9 */
+    tab = malloc(sizeof(*tab) * 9);
+
+    return (tab);
 }
 
 int main(void)
@@ -1003,10 +1008,68 @@ int main(void)
     int *ptr;
 
     ptr = get();
-    *ptr = 19;
+    *ptr = 12;
     printf("%d\n", *ptr);
+
+    free(ptr); // função free() libera espaço da memória que foi reservado em malloc
 
     return (0);
 }
 ```
-*Step -->* **C - VII - 10**
+___
+
+### main - Argumentos do Main
+
+#### Valor de retorno
+- Pode verificar o valor de retorno do programa no shell após compilção:
+    -  Com o seguinte comando: `echo $?`
+- Por convenção é importante retornar zero no fim do seu main, para dizer no\
+fim do programa, tudo abaixo está certo.
+
+#### Argumentos
+- Temos três:
+    - 1. **int argc**: indica o número de parametros que daremos ao programna
+        - *Importante:* O nome do programa conta como parametro
+        - Se não dou nenhum parametro, argc retorna 1
+    - 2. **char \*\*argv**: é um ponteiro de endereço de um pool no início de\
+    cada parâmetro que daremos em parâmetro, cada string mostra que estara\
+    no início do endereço, o que nos permite acessa-lo.
+    - 3. **char \*\*environ**: Nos permite acessar o conteúdo do nosso ambiente\
+    do shell
+        - Esta funão não é muito utilizada.
+        - Acessar o ambiente de desenvolvimento do Shell: `env`
+```c
+#include <stdio.h>
+
+/* 1. int: representa o valor de retorno
+ *    por padrão retorna '0', que representa que o programa
+ *    executou até o fim sem problemas.
+ * main: representado como função principal
+ * void: em argumentos do main, representa vazio (sem argumentos) */
+int main(void)
+{
+    return (0);
+}
+
+/* Os três argumentos do main: */
+int main(int argc, char **argv, char **environ)
+{
+    return (0);
+}
+
+int main(int argc, char **argv)
+{
+    (void) argc;
+    (void) argv;
+    printf("Numero de argumentos: %d\n", argc);
+    printf("Valor do argumento: %s\n", argv[0]); // mostra o primeiro argumento
+
+    /* Podemos armazenar estes argumentos em variaveis
+     * para poder tratar no código por exemplo */
+    char *str = argv[1];
+    printf("%s\n", str);
+
+    return (0);
+}
+```
+*Step -->* **C - IX - 1**
