@@ -1072,4 +1072,53 @@ int main(int argc, char **argv)
     return (0);
 }
 ```
-*Step -->* **C - IX - 1**
+___
+
+## Pre-processador
+
+### Compilação
+- Compilador **GCC**
+    - **gcc** tem 3 frases de compilação diferentes.
+        - **Pré-processamento** processa o *include*
+            - o comando **cpp** faz o pré-processamento
+        - **Compilação** cada arquivo é compilado por outro.
+            - **gcc -c** cria um arquivo .o que é um arquivo de objeto, neste caso\
+            dos arquivos .c, só o main sera compilado.
+        - Arquivos .o serão linkados
+
+### #include
+- #include é um comando de pré-processamento, e vai acontecer antes da compilação\
+e antes da vinculação também, que vem depois da compilação.
+- o #include, enclui o arquivo na compilação que esta entre < >
+    - Entre aspas " " ele vai procurar nas diretivas do compilador
+    - Entre < > ele vai buscar na pasta atual, ou em uma das pastas fornecidas\
+    usando -e para incluir
+- include permite incluir um arquivo em qualquewr parte do código
+___
+
+### #define
+- #define é um comando de pré-processador, ele sera executado antes da compilação
+- serve para definir, entre aspas, uma variável e substituí-la.
+- Nos permite definir o macro, que fará uma subtuição por texto.
+```c
+#include <stdio.h>
+
+// Substituição de variável (deve ser em uppercase)
+
+// #define LOL "lol\n"
+#define LOL "lol\n");
+#define POUIC LOL
+
+int main(void)
+{
+    printf(POUIC
+
+    // printf(LOL);
+
+    // printf("lol\n");
+
+    return (0);
+}
+```
+
+*Step -->* **C - IX - 4**
