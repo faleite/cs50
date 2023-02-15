@@ -1120,5 +1120,109 @@ int main(void)
     return (0);
 }
 ```
+___
 
-*Step -->* **C - IX - 4**
+### #define com variáveis
+```c
+#include <stdio.h>
+
+#define LOL(x, y) "lol %d %d\n", x, y
+
+int main(void)
+{
+    int youpi;
+
+    youpi = 42;
+    printf(LOL(youpi, 87));
+
+    return (0);
+}
+```
+___
+
+### Comandos de controle do pré-processador
+#### #if, #else, #elif e #endif
+```c
+#include <stdio.h>
+
+int main(void)
+{
+// #if defined(POUIC) // define é um tipo de loop
+#if POUIC < 10 // a variavel POUIC e seu valor foi definida na linha de comando
+    printf("youpi matin\n");
+#elif POUIC < 20
+    printf("YOYO\n");
+#else
+    printf("NO OTHER\n");
+#endif
+    return (0);
+}
+```
+
+```sh
+<!-- linha de comando -->
+$ gcc -Wall -Wextra -Werror -DPOUIC=1 tmp.c && ./a.out  //variavel POUIC com a flag -D
+youpi matin
+$ gcc -Wall -Wextra -Werror -DPOUIC=11 tmp.c && ./a.out
+YOYO
+$ gcc -Wall -Wextra -Werror -DPOUIC=311 tmp.c && ./a.out
+NO OTHER
+```
+___
+
+### #ifdef e #ifndef
+- #ifdef é o if defined, nos mostra se já foi definido
+```c
+#include <stdio.h>
+
+#define POUIC
+
+int main(void)
+{
+/* se eu passar POUIC com a flag -D (-DPOUIC) na linha de comando
+ * ou incluir #define POUIC no cabeçario
+ * o printf("youpi matin\n") é executado
+ * se não o #else é executado */
+#ifdef POUIC // mesmo que: #if defined(POUIC)
+    printf("youpi matin\n");
+#else
+    printf("NO OTHER\n");
+#endif
+    return (0);
+}
+```
+- #ifndef se ainda não foi definido
+```c
+#include <stdio.h>
+
+#define POUIC
+
+int main(void)
+{
+/* Inverso do #ifdef
+ * se eu passar POUIC com a flag -D (-DPOUIC) na linha de comando
+ * ou incluir #define POUIC no cabeçario
+ * o #else é executado */
+#ifndef POUIC // contrário do #ifdef
+    printf("youpi matin\n");
+#else
+    printf("NO OTHER\n");
+#endif
+    return (0);
+}
+```
+- Também pode ser usado para proteger um arquivo .h
+    - Ou seja não deixara voce incluir o mesmo arquivo\
+    .h no cabeçário mais de uma vez
+- Exemplo com código:
+```c
+#ifndef __FCT_H__
+# define __FCT_H__
+
+int gl_pouet = 12;
+
+#endif
+```
+
+
+*Step -->* **C - X - 1**
