@@ -1223,6 +1223,159 @@ int gl_pouet = 12;
 
 #endif
 ```
+___
 
+## Data Structures
 
-*Step -->* **C - X - 1**
+### typedef
+- Permite definir seus próprios tipos de variáveis.
+    - Redefinir um outro tipo.
+
+```c
+#include <stdio.h>
+
+// definindo um tipo de ponteiro int
+typedef int * int_p;
+
+int main(void)
+{
+    // int *a, b, c; // neste caso apenas 'a' é um ponteiro.
+    int_p   a, b, c; // neste caso todas as variaveis são um ponteiro de int.
+    int     z;
+
+    b = a;
+    b = &z;
+    return (0);
+}
+
+// criando um tipo de variavel
+typedef double my_variable;
+// é possivel fazer combinações de typedef
+typedef my_variable * my_variable_p;
+```
+___
+
+### Struct
+- Cria um novo tipo de variável associando vários tipos de variável, no\
+interior de uma estrutura.
+```c
+#include <stdio.h>
+
+// definindo um tipo de struct com o typedef
+typedef struct s_point
+{
+    int x;
+    int y;
+} t_point; // nomeando o struct
+
+int main(void)
+{
+    t_point tab[3];
+    /* mesmo que:
+    * struct s_point tab[3]; */
+
+    // Mesmo resultado com escritas diferentes
+    tab->x = 1;
+    (*tab).x = 1;
+    tab[0].x = 1;
+
+    tab[0].y = 2;
+    tab[1].x = 3;
+    tab[1].y = 4;
+
+    tab[2] = tab[0];
+    printf("%d %d\n", tab[0].x, tab[0].y);  // saída: 1 2
+
+    return (0);
+}
+```
+___
+
+- Espécie de tamanho:
+    - Na memória tudo tem tamanho.
+    - **sizeof** é uma palavra-chave que nos permite recuperar o tamanho de algo.
+```c
+#include <stdio.h>
+
+// definindo um tipo de struct com o typedef
+typedef struct s_point
+{
+    int     x; // sizeof 4
+    int     y; // sizeof 4
+    char    *name; // sizeof 8
+} t_point; // nomeando o struct
+
+int main(void)
+{
+    t_point tab[3];
+    int i;
+
+    /* Verificando os tamanhos de struct e int
+     * lu: unsigned long
+     * sizeof(i): 4
+     * sizeof(tab[0]): 16*/
+    printf("%lu %lu\n", sizeof(i), sizeof(tab[0]));
+
+    return (0);
+}
+```
+___
+
+### enum
+- Serve para redefinir um novo tipo de variaveis, mais acima de tudo\
+definir constatntes.
+
+```c
+#include <stdio.h>
+
+/* definindo uma constatnte com 'enum'
+ * enum é uma constante inteira, não podemos por numeros float */
+enum e_list
+{
+    /* Sequência numérica
+     * se em val1 nada for declarado, val1 = 0, fim = 4
+     * Essas variavies criadas serão globais */
+  //val1,
+    val1 = 12,  // Val1 = 5
+    val2, // 13 // 6
+    val3, // 14 // val3 = 5
+    val4, // 15 // 6
+    fim   // 16 // 7
+};
+
+int main(void)
+{
+    printf("%d\n", fim);
+
+    return (0);
+}
+```
+___
+
+### Union
+- struct e union se usam com a mesma gramática, embora não tenham os\
+mesmos efeitos.
+```c
+#include <stdio.h>
+
+// definindo um tipo de struct com o typedef
+typedef union u_point
+{
+    /* a valor de union sera o valor da variavel de maior valor
+    * esse valor sera administrado de acordo com o uso da variaveis */
+    int     i;
+    char    c[4];
+    float   f;
+}   t_pouet; // nomeando o union
+
+int main(void)
+{
+    t_pouet p;
+
+    printf("%lu\n", sizeof(p));
+
+    return (0);
+}
+```
+
+*Step -->* **C - XI - const**
