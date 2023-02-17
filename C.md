@@ -1377,5 +1377,39 @@ int main(void)
     return (0);
 }
 ```
+___
 
-*Step -->* **C - XI - const**
+### const
+- **const** é uma palavra-chave que serve para proteger uma variável
+    - Só é possivel declarar valor a variável com const, uma unica vêz
+```c
+// Exemplo:
+const int i = 9
+```
+___
+
+### static
+- **static** é uma palavra-chave que se aplica tanto em funções\
+quanto em variáveis-
+- Permite restringir o escopo de acessibilidade dessas funções e variáveis.
+- Se eu passar o static a minha função, ela fica restrita apenas ao arquivo a
+que ela se origina. Esta função fica inacessível a qualquer outro arquivo, não
+podendo ser linkada.
+- Em uma variável **static** permite restringir o escopo de acessibilidade
+    - Declarar uma variavel com **static** evita erros de duplicidade
+- **stack** *será útilizado somente com uma variável ou uma função global.*
+```c
+// Exemplo:
+static void fct(void) // utilizando em uma função
+{
+    static int a = 0; // utilizando em uma variável
+
+    return (0);
+}
+```
+___
+
+###
+
+
+*Step -->* **C - XII - 1**
