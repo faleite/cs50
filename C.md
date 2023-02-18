@@ -1409,7 +1409,137 @@ static void fct(void) // utilizando em uma função
 ```
 ___
 
-###
+### Listas de canais
+- Lista de canais é uma estrutura de dados que não é exatamente própria de C.
+- Parcecida com uma tabela, exceto que tem vantagens e inconvenientes em\
+relação a uma tabela.
+- Para criar uma lista de canais, precisamos de uma **struct**
+- A lista de canais é composta de dados e um ponteiro para o próximo struct s_list. (elo)
+- Ao contrário de uma tabela, eles não são contínuos na memória.
+- A vantagem da lista de canais é que podemos utilizá-la quando temos a\
+necessidade constatante de adicionar elementos.
+- Por outro lado, se queremos apenas acessar os elementos de maneira aleatória,\
+a lista de canais não é prática.
+```c
+#include <stdio.h>
 
+struct s_list
+{
+    int     i;
+    char    c;
+
+    /* isso é o que faz ser uma lista de canais
+     * *next é um ponteiro para struct s_list, que nos permite passar
+     * para o proximo elemento */
+    struct  s_list  *next;
+};
+
+void    aff_list(struct s_list *begin);
+
+int main(void)
+{
+    struct s_list elem1;
+    struct s_list elem2;
+    struct s_list elem3;
+    struct s_list *begin;
+
+    begin = &elem1;
+    elem1.next = &elem2;
+    elem2.next = &elem3;
+    elem3.next = 0;
+
+    elem1.i = 98;
+    elem2.i = 109;
+    elem3.i = 42;
+
+    /* imrpimir tudo
+     * printf("%d\n", begin->i);
+     * printf("%d\n", begin->next->i);
+     * printf("%d\n", begin->next->next->i); */
+
+    /* todas as formas imprime elem3.i
+     * printf("%d\n", begin->next->next->i);
+     * printf("%d\n", elem1.next->next->i);
+     * printf("%d\n", elem2.next->i);
+     * printf("%d\n", elem3.i); */
+
+    // chama a função que imprime toda lista de int em struct s_list
+    aff_list(begin);
+
+    return (0);
+}
+
+void    aff_list(struct s_list *begin)
+{
+    while (begin) // Enquanto begin for diferente de 0.
+    {
+        printf("%d\n", begin->i);
+        begin = begin->next;
+    }
+}
+```
+___
+
+### Árvores
+- A **árvore** é um tipo de diagrama, que é uma forma de estruturar dados
+- De um único ponto de partida/entrada, podemos percorrer todo o conjunto\
+de dados.
+- Uma árvore binária é uma estrutura com dois ponteiros de tipos similares\
+que permite criar estruturas inteligentes, que permitirão ter mais eficácia,\
+mais performance na pesquisa dos dado
+s e para inserir novos dados na sua\
+estrutura.
+```c
+// Estrutura da árvore binária:
+typedef struct s_binary_tree
+{
+    int a;
+    struct s_binary_tree    *left;
+    struct s_binary_tree    *right;
+}   t_binary_tree;
+
+int main(void)
+{
+    return (0);
+}
+```
+___
+
+### Bíbliotecas
+- É um lugar onde você pode reunir todas as funções que você usar regularmente\
+sem ter que trabalhar sempre com arquivos.
+- Também pode servir, por exemplo, para transmitir um código para alguém,\
+sem dar o seu código fonte.
+- Exemplo de criação da biblioteca:
+    - Adicionando duas funções:
+        - display_str.c
+        - display_char.c
+```c
+void    display_str(char *str);
+
+int main(void)
+{
+    display_str("Hello Wolrd!\n");
+    return (0);
+}
+```
+```bash
+# Compilar funções para .o
+$ gcc -c display_str.c
+$ gcc -c display_char.c
+
+# Criar biblioteca (nome deve sempre começar com lib)
+$ ar rc libstr.a display_char.o display_str.o
+
+# compilando um programa utilizando a biblioteca
+$ gcc -Wall -Werror -Wextra main.c -L. -lstr
+
+# uso
+$ ./a.out
+```
+```bash
+# criar um súmario da sua biblioteca para o gcc acessar as funções de forma agil
+$ ranlib libstr.a
+```
 
 *Step -->* **C - XII - 1**
