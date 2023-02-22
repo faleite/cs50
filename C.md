@@ -1,26 +1,5 @@
 # C
 
-## Notas
-___
-*Fevereiro 2023*
-|Do|Se|Te|Qu|Qu|Se|Sá|obs|
-|--|--|--|--|--|--|--|:-:|
-|29|30|31|1 | 2| 3| 4| * |
-| 5|6 |7 |8 |9 |10|11| * |
-|12|13|14|15|16|17|18| * |
-|19|20|21|22|23|24|25|   |
-|26|27|28|
-___
-
-Shell01 |Status
---------|:----:
-ex06    | ok
-
-C01  |Status
------|:----:
-ex08 | ok
-___
-
 ## Artigo
 
 - Função [write( ):](http://codewiki.wikidot.com/c:system-calls:write)
