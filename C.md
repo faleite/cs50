@@ -381,7 +381,7 @@ int main(void)
     }
 }
 ```
-*Mesmo esquema com o loob **for**:*
+*Mesmo esquema com o loop **for**:*
 
 ```c
 #include <stdio.h>
